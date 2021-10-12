@@ -1,21 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
+import Earth from "./screens/Earth";
+import Mars from "./screens/Mars";
+import Marsimg from "./assets/mars.png";
+import Earthimg from "./assets/earth.png";
+import { Image } from "react-native";
+
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen
+          name="Earth"
+          component={Earth}
+          options={{
+            headerTitle: () => (
+              <Image style={{ width: 50, height: 50 }} source={Earthimg} />
+            ),
+            headerStyle: {
+              backgroundColor: "#70483C",
+            },
+          }}
+        />
+        <Drawer.Screen
+          name="Mars"
+          component={Mars}
+          options={{
+            headerTitle: () => (
+              <Image style={{ width: 50, height: 50 }} source={Marsimg} />
+            ),
+            headerStyle: {
+              backgroundColor: "#CC3333",
+            },
+          }}
+        />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
