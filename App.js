@@ -6,6 +6,7 @@ import Mars from "./screens/Mars";
 import Marsimg from "./assets/mars.png";
 import Earthimg from "./assets/earth.png";
 import { Image } from "react-native";
+import TipProvider from "react-native-tip";
 
 const Drawer = createDrawerNavigator();
 
@@ -38,6 +39,7 @@ export default function App() {
           }}
         />
       </Drawer.Navigator>
+      <TipProvider></TipProvider>
     </NavigationContainer>
   );
 }
