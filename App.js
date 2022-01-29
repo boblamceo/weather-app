@@ -26,7 +26,7 @@ export default function App() {
             },
           }}
         />
-        <Drawer.Screen
+        {/* <Drawer.Screen
           name="Mars"
           component={Mars}
           options={{
@@ -37,7 +37,7 @@ export default function App() {
               backgroundColor: "#CC3333",
             },
           }}
-        />
+        /> */}
       </Drawer.Navigator>
       <TipProvider></TipProvider>
     </NavigationContainer>
