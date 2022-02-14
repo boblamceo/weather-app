@@ -118,15 +118,8 @@ export default function Earth() {
         round
         inputContainerStyle={{ height: vh(3), bottom: vh(0.4) }}
         lightTheme
-        searchIcon={() => (
-          <TouchableOpacity onPress={() => setLocation(searchQuery)}>
-            <Icon
-              name={"search"}
-              type={"Feather"}
-              style={{ width: 20, height: 20 }}
-            ></Icon>
-          </TouchableOpacity>
-        )}
+        onSubmitEditing={() => setLocation(searchQuery)}
+        clearIcon={false}
       />
       {!fontsLoaded || !main || !weather || !sys || !list || !location ? (
         <Text style={{ color: "red", bottom: 50 }}>{location}</Text>
