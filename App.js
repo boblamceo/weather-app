@@ -1,45 +1,27 @@
 import * as React from "react";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createStackNavigator } from "@react-navigation/stack";
+import CitySearch from "./screens/CitySearch";
 import { NavigationContainer } from "@react-navigation/native";
-import Earth from "./screens/Earth";
-import Mars from "./screens/Mars";
-import Marsimg from "./assets/mars.png";
-import Earthimg from "./assets/earth.png";
-import { Image } from "react-native";
-import TipProvider from "react-native-tip";
+import Data from "./screens/Data";
+import Charts from "./screens/Charts";
 
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen
-          name="Earth"
-          component={Earth}
-          options={{
-            headerTitle: () => (
-              <Image style={{ width: 50, height: 50 }} source={Earthimg} />
-            ),
-            headerStyle: {
-              backgroundColor: "#70483C",
-            },
-          }}
-        />
-        {/* <Drawer.Screen
-          name="Mars"
-          component={Mars}
-          options={{
-            headerTitle: () => (
-              <Image style={{ width: 50, height: 50 }} source={Marsimg} />
-            ),
-            headerStyle: {
-              backgroundColor: "#CC3333",
-            },
-          }}
-        /> */}
-      </Drawer.Navigator>
-      <TipProvider></TipProvider>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen
+          name={"City Search"}
+          component={CitySearch}
+        ></Stack.Screen>
+        <Stack.Screen name={"Data"} component={Data}></Stack.Screen>
+        <Stack.Screen name="Charts" component={Charts}></Stack.Screen>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

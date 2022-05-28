@@ -10,19 +10,28 @@
   "dependencies": {
     "@dudigital/react-native-zoomable-view": "^1.1.3",
     "@react-native-community/masked-view": "0.1.10",
+    "@react-native-picker/picker": "2.4.0",
+    "@react-navigation/bottom-tabs": "^6.2.0",
     "@react-navigation/drawer": "^6.1.3",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.2.2",
+    "@react-navigation/stack": "^6.1.1",
     "axios": "^0.22.0",
-    "expo": "~42.0.1",
-    "expo-font": "~9.2.1",
+    "expo": "^45.0.0",
+    "expo-cli": "^5.4.4",
+    "expo-font": "~10.1.0",
     "expo-linear-gradient": "~9.2.0",
+    "expo-screen-orientation": "~3.3.0",
     "expo-sensors": "~10.2.2",
     "expo-status-bar": "~1.0.4",
+    "json5": "^2.2.1",
+    "metro-react-native-babel-preset": "^0.71.0",
+    "node": "^17.7.2",
     "react": "^17.0.2",
     "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-44.0.0.tar.gz",
     "react-native-awesome-gallery": "^0.2.6",
+    "react-native-chart-kit": "^6.12.0",
     "react-native-elements": "^3.4.2",
     "react-native-expo-viewport-units": "^0.0.8",
     "react-native-gesture-handler": "~1.10.2",
@@ -33,11 +42,17 @@
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
     "react-native-speedometer": "^1.0.5",
+    "react-native-svg": "12.1.1",
+    "react-native-swipe-gestures": "^1.0.5",
+    "react-native-timer": "^1.3.6",
     "react-native-tip": "^0.0.18",
-    "react-native-web": "~0.13.12"
+    "react-native-unimodules": "^0.14.10",
+    "react-native-web": "~0.13.12",
+    "react-promise-tracker": "^2.1.0",
+    "uuid": "3.3.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0"
+    "@babel/core": "^7.12.9"
   },
   "private": true
 }

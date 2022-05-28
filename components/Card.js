@@ -1,100 +1,63 @@
-import React, { useEffect, useState } from "react";
-import { View, Image, Text } from "react-native";
+import React from "react";
+import { Image, StyleSheet, Text, View } from "react-native";
+import { useFonts } from "expo-font";
 import { vh, vw } from "react-native-expo-viewport-units";
-import * as Font from "expo-font";
-
-const Card = ({ image, temp, description, date, time, more }) => {
-  const [fontsLoaded, setFontsLoaded] = useState(false);
-
-  const loadFonts = async () => {
-    await Font.loadAsync({
-      CanOne: require("../assets/CantoraOne.ttf"),
-    });
-    setFontsLoaded(true);
-  };
-
-  useEffect(() => {
-    loadFonts();
-  }, []);
-  if (!fontsLoaded) {
-    return <Text>loading...</Text>;
+import { SimpleLineIcons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
+const horizontal = vw(100) > vh(100);
+const Card = ({ image, temp, time }) => {
+  const [loaded] = useFonts({
+    VarelaRound: require("../assets/VarelaRound-Regular.ttf"),
+  });
+  if (!loaded) {
+    return null;
   }
   return (
-    <View
-      style={{
-        height: vh(40),
-        width: vw(50),
-        backgroundColor: "#899D5E",
-        marginHorizontal: vw(1),
-        borderRadius: vw(2),
-        padding: 10,
-      }}
-    >
-      <Text style={{ color: "white", fontFamily: "CanOne", fontSize: vw(2.5) }}>
-        {date} {`${time.split(":")[0]}:${time.split(":")[1]}`}
-      </Text>
-      <Image
-        source={{ uri: image }}
-        style={{ height: vh(23), width: vw(43), bottom: vh(3) }}
-      />
-      <View
-        style={{
-          bottom: vh(7),
-          paddingVertical: vh(1),
-        }}
-      >
-        <Text
-          style={{
-            fontFamily: "CanOne",
-            color: "white",
-            fontSize: vw(10),
-            alignSelf: "center",
-          }}
-        >
-          {temp}˚C
-        </Text>
-        <Text
-          style={{
-            fontFamily: "CanOne",
-            color: "white",
-            fontSize: vw(4),
-            alignSelf: "center",
-          }}
-        >
-          {description}
-        </Text>
-        <View style={{ alignSelf: "center", alignItems: "center" }}>
-          <Text
-            style={{
-              fontFamily: "CanOne",
-              color: "white",
-              fontSize: vw(4),
-            }}
-          >
-            Feels like {more.feelsLike.toFixed(1)}˚C
-          </Text>
-          <Text
-            style={{
-              fontFamily: "CanOne",
-              color: "white",
-              fontSize: vw(4),
-            }}
-          >
-            humidity: {more.humidity}%
-          </Text>
-          <Text
-            style={{
-              fontFamily: "CanOne",
-              color: "white",
-              fontSize: vw(4),
-            }}
-          >
-            pressure: {more.pressure} hPa.
-          </Text>
-        </View>
+    <View style={styles.container}>
+      <Text style={styles.timetxt}>{time}</Text>
+      <View style={styles.iconContainer}>
+        <Image source={image} style={styles.icon} resizeMode="contain"></Image>
+      </View>
+      <Text style={styles.temptxt}>{temp.toFixed(0)}˚C</Text>
+      <View style={styles.pressure}>
+        <SimpleLineIcons name="speedometer" size={24} color="white" />
+      </View>
+      <View>
+        <FontAwesome5 name="cloud-rain" size={24} color="white" />
       </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+
+    marginHorizontal: horizontal ? vh(1) : vw(1),
+  },
+  pressure: {
+    marginBottom: horizontal ? vh(1) : vw(1),
+  },
+  timetxt: {
+    color: "white",
+    fontFamily: "VarelaRound",
+    fontSize: horizontal ? vh(2.5) : vw(2.5),
+  },
+  iconContainer: {
+    marginVertical: horizontal ? vh(1) : vw(1),
+    width: horizontal ? vh(13) : vw(13),
+    height: horizontal ? vh(13) : vw(13),
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  icon: {
+    height: horizontal ? vh(13) : vw(13),
+  },
+  temptxt: {
+    color: "white",
+    fontFamily: "VarelaRound",
+    fontSize: horizontal ? vh(6.5) : vw(6.5),
+  },
+});
 
 export default Card;
